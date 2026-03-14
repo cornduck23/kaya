@@ -13,6 +13,7 @@ from alembic import context
 
 from shared.config import settings
 from shared.db.base import Base
+from shared.db import models
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
