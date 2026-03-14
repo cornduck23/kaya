@@ -45,6 +45,21 @@ services:
     networks:
       - backend
 
+  migrations:
+    build:
+      context: .
+      dockerfile: migrations/Dockerfile
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./shared/db/migrations:/app/shared/db/migrations
+    networks:
+      - backend
+    restart: "no"
+
   redis:
     image: redis:8-alpine
     restart: unless-stopped
